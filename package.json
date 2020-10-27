@@ -1,0 +1,16 @@
+{
+  "name": "db-mongoose-schemas",
+  "version": "1.0.0",
+  "description": "This assignment will give you chance to practise writing Mongoose Schemas",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}
