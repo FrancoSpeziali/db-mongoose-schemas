@@ -4,7 +4,7 @@ This assignment will give you chance to practise
 
 - using a .env file
 - creating express endpoints
-- writing Mongoose Schemas
+- writing Mongoose Schemas + Models
 
 ## Assignments
 
