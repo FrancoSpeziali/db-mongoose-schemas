@@ -27,7 +27,7 @@ Note: For this assignment, we already assume you have a MongoDB server, and know
     - DB_PASS=
     - DB_NAME=
 
-    mongodb+srv://<DB_USER>:<DB_PASS>@<DB_HOST>/<DB_NAME>?retryWrites=true&w=majority
+    `mongodb+srv://<DB_USER>:<DB_PASS>@<DB_HOST>/<DB_NAME>?retryWrites=true&w=majority`
 
 ## Assignment 2 - Using dotenv
 
