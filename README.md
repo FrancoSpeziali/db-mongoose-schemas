@@ -143,7 +143,7 @@ module.exports = UserSchema;
     
     `dateOfBirth` should be of type `Date`
     
-    The rest should be of type `string`
+    The rest should be of type `String`
 
 ## Assignment 7 - Adding validation to the "UserSchema" schema
 
