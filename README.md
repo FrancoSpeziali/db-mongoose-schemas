@@ -6,9 +6,9 @@ This assignment will give you chance to practise
 - creating express endpoints
 - writing Mongoose Schemas + Models
 
-## Assignments
+## Tasks
 
-## Assignment 1 - Write a .env file
+## Task 1 - Write a .env file
 
 Note: For this assignment, we already assume you have a MongoDB server, and know how to access your credentials.
 
@@ -29,7 +29,7 @@ Note: For this assignment, we already assume you have a MongoDB server, and know
 
     `mongodb+srv://<DB_USER>:<DB_PASS>@<DB_HOST>/<DB_NAME>?retryWrites=true&w=majority`
 
-## Assignment 2 - Using dotenv
+## Task 2 - Using dotenv
 
 1. Use the following command to install the `dotenv` module
 
@@ -51,7 +51,7 @@ Note: For this assignment, we already assume you have a MongoDB server, and know
     console.log(process.env.DB_NAME);
     ```
 
-## Assignment 3 - Connecting Mongoose with your database
+## Task 3 - Connecting Mongoose with your database
 
 We will install `mongoose` and connect it to our database
 
@@ -77,7 +77,7 @@ We will install `mongoose` and connect it to our database
             'mongodb+srv://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?retryWrites=true&w=majority')
     ```
    
-## Assignment 4 - Let's test our DB connection
+## Task 4 - Let's test our DB connection
 
 The `mongoose.connect()` method returns a promise, which we can use to determine if the connection with the database went ok or not.
 
@@ -87,7 +87,7 @@ The `mongoose.connect()` method returns a promise, which we can use to determine
 
 3. Test your code by running it. What message do you see in the `console`? 
 
-## Assignment 5 - Creating a registration endpoint
+## Task 5 - Creating a registration endpoint
 
 Now we've connected our database, we want to build an endpoint which will allow us to register new users onto our website. To do this, we will have to use `express.js`
 
@@ -112,7 +112,7 @@ Now we've connected our database, we want to build an endpoint which will allow 
 
 If your endpoint works, move onto the next assignment.
 
-## Assignment 6 - Mongoose - Complete the "UserSchema" Schema
+## Task 6 - Mongoose - Complete the "UserSchema" Schema
 
 Edit the file `Schemas/UserSchema.js`.
 
@@ -145,7 +145,7 @@ module.exports = UserSchema;
     
     The rest should be of type `String`
 
-## Assignment 7 - Adding validation to the "UserSchema" schema
+## Task 7 - Adding validation to the "UserSchema" schema
 
 All values **except** for `telephone` and gender should be `required`
 
@@ -153,7 +153,7 @@ All values **except** for `telephone` and gender should be `required`
 
 `gender` should default to the string `'N/A'`
 
-## Assignment 8 - Creating a model from the schema
+## Task 8 - Creating a model from the schema
 
 Now our schema has been defined, we must instantiate it into a model.
 
@@ -173,7 +173,7 @@ const User = mongoose.model('User', UserSchema);
 
 4. Export your variable `User` from `Models/User.js` using `module.exports`
 
-## Assignment 9 - Saving data to your model
+## Task 9 - Saving data to your model
 
 When we save data to our model with the `save()` method, the data is automatically saved to the database.
 
@@ -205,7 +205,7 @@ Once your test is successful, move onto the next assignment
 
 Research: [Mongoose Model API (en)](https://mongoosejs.com/docs/api/model.html)
 
-## Assignment 10 - Preparing to receive data from POST
+## Task 10 - Preparing to receive data from POST
 
 We will replace our dummy data with the data we receive from the POST request
 
@@ -221,7 +221,7 @@ npm install cors
 
     > Hint: Don't forget to import `cors` before trying to use it
 
-## Assignment 11 - Receiving data from POST
+## Task 11 - Receiving data from POST
 
 Inside your `/user/register` endpoint:
 
@@ -229,7 +229,7 @@ Inside your `/user/register` endpoint:
 
 Once you are happy with your test, move onto the next assignment.
 
-## Assignment 12 - Connect our POST data to our Mongoose model
+## Task 12 - Connect our POST data to our Mongoose model
 
 1. Take the `body` parameters from the POST request, and map them into the object you created for your `User` constructor - replacing the dummy data you previously used
 
@@ -241,7 +241,7 @@ Once you are happy with your test, move onto the next assignment.
 
 Test your application using your API testing tool.
 
-## Assignment 13 (optional) - Build a frontend to make these requests
+## Task 13 (optional) - Build a frontend to make these requests
 
 Build a frontend which will make the `POST` request you were previously testing with your API testing tool.
 
