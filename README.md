@@ -1,10 +1,18 @@
 # Mongoose Schemas + Models
 
-This assignment will give you chance to practise
+This assignment will allow to build the database structure for a registration form
 
-- using a .env file
-- creating express endpoints
-- writing Mongoose Schemas + Models
+What you will be doing
+
+This project will allow you to practise using:
+
+> - Connecting to a MongoDB database
+> - Writing a schema for a MongoDB database with Mongoose
+
+This project assumes you've already had experience with:
+
+> - using a .env file
+> - creating express endpoints
 
 ## Tasks
 
@@ -103,10 +111,12 @@ Now we've connected our database, we want to build an endpoint which will allow 
     - listen for a `POST` request (we want to receive data)
     - use the path `/user/register`
     - don't forget `response.send()`
+   
+   > Bonus: Use Express routing instead to create a Route for `/user`
 
 4. Make a call to `app.listen()` to allow the server to start listening for incoming connections. We will use port `3001`.
 
-    > Hint: For bonus points, you can move the port number into your `.env` file
+    > Bonus: Move the port number into your `.env` file
 
 5. Use `console.log` to test your endpoint. Use an API testing tool such as POSTMAN or Insomnia to test your endpoint.
 
@@ -114,21 +124,13 @@ If your endpoint works, move onto the next assignment.
 
 ## Task 6 - Mongoose - Complete the "UserSchema" Schema
 
-Edit the file `Schemas/UserSchema.js`.
+Edit the file `Models/User.js`.
 
-1. Import `mongoose` into `Schemas/UserSchema.js` using the `require` function
+1. Import `mongoose` into `Models/User.js` using the `require` function
 
-2. Use the following starter code:
+2. Use the snippet **UserSchema template**
 
-```javascript
-const UserSchema = new mongoose.Schema({
-	firstName: { type: String, required: true }
-});
-
-module.exports = UserSchema;
-```
-
-3. Complete the Schema above. The UserSchema schema should have the following data:
+3. Complete the code for the UserSchema. The UserSchema schema should have the following data:
 
     ```
     username
@@ -149,7 +151,11 @@ module.exports = UserSchema;
 
 All values **except** for `telephone` and gender should be `required`
 
-`gender` should have an `enum` validation. It should accept only the strings `'Male'`, `'Female'` and `'N/A'`.
+`gender` should have an `enum` validation. It should accept only the strings:
+   - `'Male'`
+   - `'Female'`
+   - `'Transgender'`
+   - `'N/A'`
 
 `gender` should default to the string `'N/A'`
 
@@ -157,25 +163,17 @@ All values **except** for `telephone` and gender should be `required`
 
 Now our schema has been defined, we must instantiate it into a model.
 
-By doing this it will give us access to methods such as `save()`, allowing us to quickly and easily save data into our database.
+> By doing this it will give us access to the document methods such as `create()`, allowing us to quickly and easily save data into our database.
 
 Edit the file `Models/User.js`.
 
-1. Import `mongoose` into `Models/User.js` using the `require` function
+1. Use the snippet **User Model template**
 
-2. Import your `UserSchema` into `Models/User.js` using the `require` function
-
-3. Use the following starter code:
-
-```javascript
-const User = mongoose.model('User', UserSchema);
-```
-
-4. Export your variable `User` from `Models/User.js` using `module.exports`
+2. Export the variable `User` from `Models/User.js` using `module.exports`
 
 ## Task 9 - Saving data to your model
 
-When we save data to our model with the `save()` method, the data is automatically saved to the database.
+When we save data to our model with the `create()` method, the data is automatically saved to the database.
 
 We will test saving data to our model, by passing in some data.
 
@@ -183,10 +181,10 @@ For now, we will use dummy data. Later we will use real data posted to the API.
 
 1. Import `User` into `server.js` using the `require` function
 
-2. Inside your `POST` `/user/register` route, create an instance of `User`, and save the result into a variable, `newUser`. Pass an object into the `User` constructor. For example:
+2. Inside your `POST` `/user/register` route, create a new `User`, with data that matches the `UserSchema` using the `create()` method. Since this method returns a `Promise`, you must treat it as such. For example:
 
     ```javascript
-    const newUser = new User({
+    const newUser = await User.create({
        firstName: 'Franco'
     });
     ```
@@ -195,11 +193,10 @@ For now, we will use dummy data. Later we will use real data posted to the API.
 
 4. Your new variable `"newUser"` is an instance of the model `"User"`. You can think of the model like an ES6 class. It has access to all the mongoose Model methods.
 
-    - Run the `save()` method on `newUser`. `save()` returns a promise.
     - If the promise is successful, post a message in the `console`
     - If the promise is unsuccessful, post the error in the `console` and investigate why
 
-5. Use a MongoDB database viewing tool such as Compass to check the data that you tried to save, is saved correctly in the database
+5. Use a MongoDB database viewing tool such as Compass to check the data that you tried to save is in the database
 
 Once your test is successful, move onto the next assignment
 
@@ -213,15 +210,15 @@ Before we can do this, we must prepare our application to receive data.
 
 1. Install the cors middleware package
 
-```shell script
-npm install cors
-```
+   ```shell script
+   npm install cors
+   ```
 
 2. Add the middleware `express.json()` and `cors()` to your server application
 
     > Hint: Don't forget to import `cors` before trying to use it
 
-## Task 11 - Receiving data from POST
+## Task 11 - Receiving data from POST /user/register
 
 Inside your `/user/register` endpoint:
 
@@ -241,9 +238,22 @@ Once you are happy with your test, move onto the next assignment.
 
 Test your application using your API testing tool.
 
-## Task 13 (optional) - Build a frontend to make these requests
+## Task 13 - Get all users with GET /user/list
 
-Build a frontend which will make the `POST` request you were previously testing with your API testing tool.
+1. Create an endpoint inside `server.js`. It should:
+   - listen for a `GET` request (we want to receive data)
+   - use the path `/user/list`
+   - don't forget `response.send()`
+
+   > Bonus: Use Express routing instead to create a Route for `/user`
+
+2. Inside the handler for the `/user/list` endpoint, use the method `User.find()` to get all the users saved in the database
+   - `User.find()` returns a `Promise` so treat it as such
+   - Return the results to the user
+   
+## Task 14 (optional) - Build a frontend for the POST /user/register request
+
+Build a frontend which will make the `POST` requests you were previously testing with your API testing tool.
 
 1. The frontend should consist of a `<form>`, which will take the following details:
 
