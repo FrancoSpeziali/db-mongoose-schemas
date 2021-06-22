@@ -241,7 +241,7 @@ Test your application using your API testing tool.
 ## Task 13 - Get all users with GET /user/list
 
 1. Create an endpoint inside `server.js`. It should:
-   - listen for a `GET` request (we want to receive data)
+   - listen for a `GET` request (we want to receive data from the server)
    - use the path `/user/list`
    - don't forget `response.send()`
 
