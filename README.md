@@ -171,7 +171,7 @@ Edit the file `Models/User.js`.
 
 2. Export the variable `User` from `Models/User.js` using `module.exports`
 
-## Task 9 - Saving data to your model
+## Task 9 - Saving data to your collection with the model
 
 When we save data to our model with the `create()` method, the data is automatically saved to the database.
 
